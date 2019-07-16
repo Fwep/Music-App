@@ -31,6 +31,7 @@ class BandsController < ApplicationController
 
   def update
     @band = Band.find_by(id: params[:id])
+    @band.update_attributes(band_params)
     if @band.save
       redirect_to bands_url
     else
