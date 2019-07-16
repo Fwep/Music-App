@@ -17,12 +17,22 @@
   
   <div>
     <label for="email-input">Email:</label>
-    <input id="email-input" type="email" name="<%= form == :session ? 'session[email]' : 'user[email]'  %>">
+    <input 
+    id="email-input" 
+    type="email" 
+    name="<%= form == :session ? 'session[email]' : 'user[email]'  %>"
+    value="<%= user.email %>"
+    >
   </div>
   
   <div>
     <label for="password-input">Password:</label>
-    <input id="password-input" type="password" name="<%= form == :session ? 'session[password]' : 'user[password]' %>">
+    <input 
+    id="password-input"
+    type="password"
+    name="<%= form == :session ? 'session[password]' : 'user[password]' %>"
+    value="<%= user.password %>"
+    >
   </div>
 
   <div>
