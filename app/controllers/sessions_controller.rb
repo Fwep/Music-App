@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  protect_from_forgery except: :create
-
   def new
     @user = User.new
     render :new
@@ -17,6 +15,7 @@ class SessionsController < ApplicationController
       redirect_to user_url(@user)
     else
       flash.now[:errors] = ["Invalid username/password combination"]
+      @user = User.new(session_params)
       render :new
     end
   end
