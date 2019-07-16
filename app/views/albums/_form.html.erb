@@ -1,0 +1,32 @@
+
+<form action="<%= action_url %>", method="POST">
+  <% if action == :update %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+  <%= auth_token %>
+
+  <%= render "shared/errors"%>
+
+  <label for="album-band">Band:</label>
+  <select id="album-band" name="album[band_id]">
+    <% Band.all.each do |band| %>
+      <option <%= band.id == params[:band_id].to_i ? "selected" : "" %> value="<%= band.id %>" >
+        <%= band.name %>
+    <% end %>
+  </select>
+
+  <label for="album-name">Title:</label>
+  <input id="album-name" type="text" name="album[title]" value="<%= album.title %>">
+
+  <label for="album-year">Year:</label>
+  <input id="album-year" type="number" name="album[year]" value="<%= album.year %>">
+
+  <div>
+    <label for="album-live">Live</label>
+    <input id="album-studio" type="radio" value="true" name="album[live]">
+    <label for="album-studio">Studio</label>
+    <input id="album-studio" type="radio" value="false" name="album[live]" <%= "checked" if !album.live %> >
+  </div>
+
+  <input type="submit" value="<%= action == :create ? "Create an album" : "Update an album" %>">
+</form>
