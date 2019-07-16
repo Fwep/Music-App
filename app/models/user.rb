@@ -31,7 +31,7 @@ class User < ApplicationRecord
   def self.generate_session_token
     token = SecureRandom.urlsafe_base64
 
-    while self.class.exists?(session_token: )
+    while self.exists?(session_token: token)
       token = SecureRandom.urlsafe_base64
     end
 
@@ -55,7 +55,7 @@ class User < ApplicationRecord
 
   private
   def ensure_session_token
-    self.session_token ||= self.generate_session_token
+    self.session_token ||= User.generate_session_token
     
   end
 end
