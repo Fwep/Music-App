@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(version: 2019_07_17_044321) do
   create_table "tracks", force: :cascade do |t|
     t.bigint "album_id", null: false
     t.string "title", null: false
+    t.integer "ord", null: false
     t.text "lyrics"
     t.boolean "bonus", default: false
+    t.index ["album_id", "ord"], name: "index_tracks_on_album_id_and_ord", unique: true
     t.index ["album_id"], name: "index_tracks_on_album_id"
     t.index ["title"], name: "index_tracks_on_title"
   end
