@@ -16,6 +16,9 @@ class Album < ApplicationRecord
 
   belongs_to :band
 
+  has_many :tracks,
+    dependent: :destroy
+
   after_initialize :set_defaults
 
   def set_defaults
