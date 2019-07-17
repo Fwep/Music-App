@@ -6,6 +6,7 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find_by(id: params[:id])
+    @albums = @band.albums
   end
 
   def new
