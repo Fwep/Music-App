@@ -1,1 +1,7 @@
 <h2><%= @band.name %></h2>
+<ul>
+  <% @albums.each do |album| %>
+    <li><%= link_to "#{album.title}", album_url(album) %></li>
+  <% end %>
+</ul>
+<%= link_to "Create an album", new_band_album_url(@band) %>
