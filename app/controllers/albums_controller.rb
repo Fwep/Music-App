@@ -37,6 +37,12 @@ class AlbumsController < ApplicationController
     render :show
   end
 
+  def destroy
+    @album = Album.find(params[:id])
+    @album.destroy
+    redirect_to band_url(@album.band_id)
+  end
+
   private
   def album_params
     params.require(:album).permit(:band_id, :title, :live, :year)
