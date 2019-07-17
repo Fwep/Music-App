@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :albums, except: :new
+
+  resources :tracks
 end
